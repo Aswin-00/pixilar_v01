@@ -25,6 +25,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Run Tests
+
+    - name: Set environment variables
       run: |
+        echo "GOOGLE_SSO_CLIENT_ID=${{ secrets.GOOGLE_SSO_CLIENT_ID }}" >> .env
+        echo "GOOGLE_SSO_PROJECT_ID=${{ secrets.GOOGLE_SSO_PROJECT_ID }}" >> .env
+        echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> .env
+        echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> .env
+        echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> .env
+        echo "AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }}" >> .env
+        echo "AWS_S3_SIGNATURE_NAME=${{ secrets.AWS_S3_SIGNATURE_NAME }}" >> .env
+        echo "AWS_S3_REGION_NAME=${{ secrets.AWS_S3_REGION_NAME }}" >> .env
+        echo "AWS_S3_FILE_OVERWRITE=${{ secrets.AWS_S3_FILE_OVERWRITE }}" >> .env
+        echo "AWS_S3_VERITY=${{ secrets.AWS_S3_VERITY }}" >> .env
+        echo "AWS_DEFAULT_ACL=${{ secrets.AWS_DEFAULT_ACL }}" >> .env
+
+    - name: Run Tests
+      run: 
+
         python manage.py test

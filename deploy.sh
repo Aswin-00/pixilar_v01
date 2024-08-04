@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+
+
 echo "deleting old app"
 sudo rm -rf /var/www/
 
@@ -20,6 +23,9 @@ sudo apt-get install -y python3 python3-pip
 # Install application dependencies from requirements.txt
 echo "Install application dependencies from requirements.txt"
 
+
+sudo apt install python3.12-venv
+
 #creata a venv to avoid a error 
 sudo python3 -m venv env_project
 sudo source env_project/bin/activate
@@ -33,7 +39,6 @@ sudo python3 manage.py migrate
 # Update and install Nginx if not already installed
 if ! command -v nginx > /dev/null; then
     echo "Installing Nginx"
-    sudo apt-get update
     sudo apt-get install -y nginx
 fi
 

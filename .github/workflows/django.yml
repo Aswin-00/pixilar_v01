@@ -26,7 +26,7 @@ jobs:
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
         run: |
           echo "EC2_USERNAME=${{ env.EC2_USERNAME }}" >> env
-          echo "GOOGLE_SSO_CLIENT_ID=${{ env.GOOGLE_SSO_CLIENT_ID }}" >> env
+          echo "GOOGLE_SSO_CLIENT_ID=${{ var.GOOGLE_SSO_CLIENT_ID }}" >> env
           echo "GOOGLE_SSO_PROJECT_ID=${{ env.GOOGLE_SSO_PROJECT_ID }}" >> env
           echo "GOOGLE_CLIENT_SECRET=${{ env.GOOGLE_CLIENT_SECRET }}" >> env
           echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> env

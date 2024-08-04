@@ -2,11 +2,11 @@
 
 # WARNING: This command will delete all files and directories in the current location.
 # Uncomment the following line only if you intend to clear the current directory.
-# sudo rm -r *
+sudo rm -r *
 
 # Move the 'env' directory to '.env' if needed (rename for convention purposes).
 # Uncomment if you need to rename an existing virtual environment directory.
-# sudo mv env .env
+sudo mv env .env
 
 # Update package lists for upgrades and new package installations
 sudo apt-get update

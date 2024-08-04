@@ -21,13 +21,13 @@ sudo apt-get install -y python3 python3-pip
 echo "Install application dependencies from requirements.txt"
 
 #creata a venv to avoid a error 
-sudo python -m venv env_project
+sudo python3 -m venv env_project
 sudo source env_project/bin/activate
 sudo pip install -r requirements.txt
 
 # Create and apply migrations
-sudo python manage.py makemigrations
-sudo python manage.py migrate
+sudo python3 manage.py makemigrations
+sudo python3 manage.py migrate
 
 
 # Update and install Nginx if not already installed

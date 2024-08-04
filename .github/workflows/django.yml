@@ -25,7 +25,6 @@ jobs:
 
       - name: Create .env file dynamically 🧨
         env:
-          ENV: ${{ secrets.ENV }}
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |

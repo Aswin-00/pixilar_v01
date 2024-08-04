@@ -18,7 +18,8 @@ sudo mv env .env
 
 sudo apt-get update
 echo "installing python and pip"
-sudo apt-get install -y python3 python3-pip
+
+sudo apt-get install -y python3.12-venv python3-full
 
 # Install application dependencies from requirements.txt
 echo "Install application dependencies from requirements.txt"

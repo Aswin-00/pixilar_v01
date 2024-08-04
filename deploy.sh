@@ -7,17 +7,15 @@
 # Move the 'env' directory to '.env' if needed (rename for convention purposes).
 # Uncomment if you need to rename an existing virtual environment directory.
 sudo mv env .env
-
 # Update package lists for upgrades and new package installations
 sudo apt-get update
-
-sudo apt-get install python3-venv
+sudo apt-get  install python3.11
+sudo apt-get -y install python3.11-venv  python3.11-full
 
 # Check if the 'env' directory already exists before creating a new virtual environment
-if [ ! -d "box_venv" ]; then
     # Create a new virtual environment in the 'env' directory
-    python3 -m venv box_venv
-fi
+python3.11  -m venv box_venv
+
 
 # Activate the virtual environment
 source box_venv/bin/activate

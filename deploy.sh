@@ -11,8 +11,7 @@ sudo mv env .env
 # Update package lists for upgrades and new package installations
 sudo apt-get update
 
-# Optional: Install Python virtual environment tools (uncomment if needed)
-# sudo apt-get install python3-venv
+sudo apt-get install python3-venv
 
 # Check if the 'env' directory already exists before creating a new virtual environment
 if [ ! -d "box_venv" ]; then

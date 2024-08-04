@@ -5,6 +5,8 @@ from .forms  import ImageUploadForm
 from .models import Image 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -40,3 +42,11 @@ class ImageCreateView(LoginRequiredMixin, CreateView):
         # Set the user before saving the form
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+    def get_context_data(self, **kwargs):
+        # Get the existing context from the superclass method
+        context = super().get_context_data(**kwargs)
+        # Add the user's images ordered by upload date
+        context['user_images'] = Image.objects.filter(user=self.request.user).order_by('-uploaded_at')
+        return context
+    

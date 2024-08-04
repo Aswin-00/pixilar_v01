@@ -24,6 +24,7 @@
             margin: 20px 0;
         }
         .image-gallery {
+            padding-top:40px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 10px;
@@ -58,6 +59,10 @@
             <div class="user-info">
                 <h2>Welcome, {{ user.username }}!</h2>
                 <a href="/logout">logout</a>
+                <a href="/upload">upload</a>
+
+
+
                 
                 <!-- Search bar -->
                 <div class="search-bar">
@@ -66,26 +71,26 @@
                         <button type="submit">Search</button>
                     </form>
                 </div>
-                
+                {% block imageupload %}
+                   
+                {% endblock  %}
+
+
                 <!-- Display user images -->
-                <div class="image-gallery">
+                <div class="image-gallery" >
                     {% for image in user_images %}
                         <div class="image-item">
                             <img src="{{ image.image.url }}" alt="{{ image.title }}">
                         </div>
                     {% empty %}
-                        <p>No images found. Start uploading your images below!</p>
+                    
+                        <p>No images was upload by you</p>
                     {% endfor %}
                 </div>
 
-                <!-- Upload user images -->
-                <div class="upload-section">
-                    {% include "uploadimage.html" %}
+                
 
 
-
-
-                </div>
 
             </div>
             {% else %}

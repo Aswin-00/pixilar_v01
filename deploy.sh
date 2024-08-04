@@ -29,7 +29,7 @@ sudo apt install python3.12-venv
 
 #creata a venv to avoid a error 
 sudo python3 -m venv env_project
-sudo source env_project/bin/activate
+source env_project/bin/activate
 sudo pip install -r requirements.txt
 
 # Create and apply migrations

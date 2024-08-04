@@ -1,0 +1,17 @@
+#django version
+Django
+
+#sso version
+
+django-google-sso
+#python version
+#python==3.11.9
+#for sso for sing and singup 
+
+# need django verison
+django-allauth
+django-storages 
+boto3
+jwt
+pillow
+PyJWT

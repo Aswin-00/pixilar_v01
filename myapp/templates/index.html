@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            margin-top: 20px;
+        }
+        .search-bar {
+            margin: 20px 0;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        .image-gallery img {
+            width: 100%;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+        .upload-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .login {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Main Page</h1>
+    </header>
+
+    <main>
+        {% if user.is_authenticated %}
+            <div class="user-info">
+                <h2>Welcome, {{ user.username }}!</h2>
+                
+                <!-- Search bar -->
+                <div class="search-bar">
+                    <form method="GET" action="{% url 'search_results' %}">
+                        <input type="text" name="query" placeholder="Search images..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                
+                <!-- Display user images -->
+                <div class="image-gallery">
+                    {% for image in user_images %}
+                        <div class="image-item">
+                            <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                        </div>
+                    {% empty %}
+                        <p>No images found. Start uploading your images below!</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Upload user images -->
+                <div class="upload-section">
+                    {% include "uploadimage.html" %}
+
+
+
+
+                </div>
+
+            </div>
+            {% else %}
+            {% load socialaccount %}
+            <div class="login">
+                <h2>Login with Google</h2>
+                <a href="{% provider_login_url 'google' %}?next=/">Login</a>
+            </div>
+        {% endif %}
+    </main>
+</body>
+</html>

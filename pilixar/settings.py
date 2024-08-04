@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from . import key_sec 
 import os
+from decouple import config
+
 
 SITE_ID=3
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -158,10 +159,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GOOGLE_SSO_CLIENT_ID = key_sec.CLIENT_ID
-GOOGLE_SSO_PROJECT_ID =   key_sec.PROJECT_ID
-GOOGLE_SSO_CLIENT_SECRET =key_sec.CLIENT_SECRET
-
 
 AUTHENTICATION_BACKENDS = [
     
@@ -176,21 +173,34 @@ AUTHENTICATION_BACKENDS = [
 LOGIN_REDIRECT='/'
 LOGOUT_REDIRECT='/'
 
-AWS_ACCESS_KEY_ID = key_sec.AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY = key_sec.AWS_SECRET_ACCESS_KEY
-AWS_STORAGE_BUCKET_NAME =  key_sec.AWS_STORAGE_BUCKET_NAME
-AWS_S3_SIGNATURE_NAME = key_sec.AWS_S3_SIGNATURE_NAME
-AWS_S3_REGION_NAME = key_sec.AWS_S3_REGION_NAME
-AWS_S3_FILE_OVERWRITE = key_sec.AWS_S3_FILE_OVERWRITE
-AWS_S3_VERITY = key_sec.AWS_S3_VERITY
+#sso  admin
 
+GOOGLE_SSO_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+GOOGLE_SSO_PROJECT_ID =   config('GOOGLE_SSO_PROJECT_ID')
+GOOGLE_SSO_CLIENT_SECRET =config('GOOGLE_CLIENT_SECRET')
+
+
+
+
+
+#aws
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+
+#s3
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_SIGNATURE_NAME = config('AWS_S3_SIGNATURE_NAME')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
+AWS_S3_FILE_OVERWRITE = config('AWS_S3_FILE_OVERWRITE', cast=bool)
+AWS_S3_VERITY = config('AWS_S3_VERITY', cast=bool)
+AWS_DEFAULT_ACL = config('AWS_DEFAULT_ACL')
+
+#s3 url
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
 
-AWS_DEFAULT_ACL = key_sec.AWS_DEFAULT_ACL
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_DEFAULT_ACL = None  # Set to None to not send any ACL
 
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

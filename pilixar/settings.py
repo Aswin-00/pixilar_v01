@@ -31,7 +31,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 #sso setting
 GOOGLE_SSO_ALLOWABLE_DOMAINS = ["gmail.com"]
 

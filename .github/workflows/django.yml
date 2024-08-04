@@ -25,18 +25,19 @@ jobs:
         env:
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
         run: |
-          echo "EC2_USERNAME=${{ env.EC2_USERNAME }}" >> env
-          echo "GOOGLE_SSO_CLIENT_ID=${{ var.GOOGLE_SSO_CLIENT_ID }}" >> env
-          echo "GOOGLE_SSO_PROJECT_ID=${{ env.GOOGLE_SSO_PROJECT_ID }}" >> env
-          echo "GOOGLE_CLIENT_SECRET=${{ env.GOOGLE_CLIENT_SECRET }}" >> env
-          echo "AWS_ACCESS_KEY_ID=${{ env.AWS_ACCESS_KEY_ID }}" >> env
-          echo "AWS_SECRET_ACCESS_KEY=${{ env.AWS_SECRET_ACCESS_KEY }}" >> env
-          echo "AWS_STORAGE_BUCKET_NAME=${{ env.AWS_STORAGE_BUCKET_NAME }}" >> env
-          echo "AWS_S3_SIGNATURE_NAME=${{ env.AWS_S3_SIGNATURE_NAME }}" >> env
-          echo "AWS_S3_REGION_NAME=${{ env.AWS_S3_REGION_NAME }}" >> env
-          echo "AWS_S3_FILE_OVERWRITE=${{ env.AWS_S3_FILE_OVERWRITE }}" >> env
-          echo "AWS_S3_VERITY=${{ env.AWS_S3_VERITY }}" >> env
-          echo "AWS_DEFAULT_ACL=${{ env.AWS_DEFAULT_ACL }}" >> env
+          echo "EC2_USERNAME=${{ secrets.EC2_USERNAME }}" >> env
+          echo "GOOGLE_SSO_CLIENT_ID=${{ secrets.GOOGLE_SSO_CLIENT_ID }}" >> env
+          echo "GOOGLE_SSO_PROJECT_ID=${{ secrets.GOOGLE_SSO_PROJECT_ID }}" >> env
+          echo "GOOGLE_CLIENT_SECRET=${{ secrets.GOOGLE_CLIENT_SECRET }}" >> env
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> env
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> env
+          echo "AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }}" >> env
+          echo "AWS_S3_SIGNATURE_VERSION=${{ secrets.AWS_S3_SIGNATURE_VERSION }}" >> env
+          echo "AWS_S3_REGION_NAME=${{ secrets.AWS_S3_REGION_NAME }}" >> env
+          echo "AWS_S3_FILE_OVERWRITE=${{ secrets.AWS_S3_FILE_OVERWRITE }}" >> env
+          echo "AWS_S3_VERIFY=${{ secrets.AWS_S3_VERIFY }}" >> env
+          echo "AWS_DEFAULT_ACL=${{ secrets.AWS_DEFAULT_ACL }}" >> env
+
 
 
       - name: Copy files to remote server 🚙

@@ -15,13 +15,13 @@ sudo apt-get update
 # sudo apt-get install python3-venv
 
 # Check if the 'env' directory already exists before creating a new virtual environment
-if [ ! -d "env" ]; then
+if [ ! -d "box_venv" ]; then
     # Create a new virtual environment in the 'env' directory
-    python3 -m venv env
+    python3 -m venv box_venv
 fi
 
 # Activate the virtual environment
-source env/bin/activate
+source box_venv/bin/activate
 
 # Install all required packages listed in 'requirements.txt'
 pip install -r requirements.txt

@@ -21,11 +21,9 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-  - name: Create .env file dynamically 🧨
+      - name: Create .env file dynamically 🧨
         env:
-          ENV: ${{ secrets.ENV }}
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GOOGLE_SSO_CLIENT_ID: ${{ secrets.GOOGLE_SSO_CLIENT_ID }}
           GOOGLE_SSO_PROJECT_ID: ${{ secrets.GOOGLE_SSO_PROJECT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
@@ -38,9 +36,7 @@ jobs:
           AWS_S3_VERIFY: ${{ secrets.AWS_S3_VERIFY }}
           AWS_DEFAULT_ACL: ${{ secrets.AWS_DEFAULT_ACL }}
         run: |
-          echo "ENV=${ENV}" >> env
           echo "EC2_USERNAME=${EC2_USERNAME}" >> env
-          echo "OPENAI_API_KEY=${OPENAI_API_KEY}" >> env
           echo "GOOGLE_SSO_CLIENT_ID=${GOOGLE_SSO_CLIENT_ID}" >> env
           echo "GOOGLE_SSO_PROJECT_ID=${GOOGLE_SSO_PROJECT_ID}" >> env
           echo "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}" >> env

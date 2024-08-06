@@ -6,16 +6,19 @@
 
 # Move the 'env' directory to '.env' if needed (rename for convention purposes).
 # Uncomment if you need to rename an existing virtual environment directory.
-sudo killall gunicorn
+
+if systemctl is-active --quiet  gunicorn.service ;then 
+    sudo systemctl stop gunicorn.service
+else
+    echo "check done"
+
+if
 
 sudo mv env .env
 # Update package lists for upgrades and new package installations
 sudo apt-get update
-sudo apt-get  install python3.11
-sudo apt-get -y install python3.11-venv  python3.11-full
+sudo apt-get -y install python3.11 python3.11-venv  python3.11-full
 
-# Check if the 'env' directory already exists before creating a new virtual environment
-    # Create a new virtual environment in the 'env' directory
 python3.11  -m venv box_venv
 
 
@@ -26,19 +29,11 @@ source box_venv/bin/activate
 pip install -r requirements.txt
 
 # Install Gunicorn, the WSGI server, if it's not listed in requirements.txt
-pip install gunicorn
 
 # Make database migrations (prepares migration files)
 
 python3.11 manage.py add_product
 
 
-# Start the Django development server (for local development/testing only)
-# Uncomment the next line if you want to run the Django development server
-#python manage.py runserver 0.0.0.0:8000
-
-# Start the application with Gunicorn for production
-# This will start Gunicorn with 3 worker processes, listening on all interfaces at port 8000
-#gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
-nohup gunicorn pilixar.wsgi:application --bind 0.0.0.0:8000 --workers 3   &
+sudo systemctl start gunicorn
 

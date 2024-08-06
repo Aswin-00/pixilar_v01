@@ -16,3 +16,4 @@ jwt
 pillow
 PyJWT
 python-decouple
+gunicorn

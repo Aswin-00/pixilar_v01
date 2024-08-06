@@ -1,17 +1,12 @@
 [Unit]
-
-Description=gunicorn daemon for pilixar
+Description=gunicorn daemon for pilixar project
 After=network.target
 
 [Service]
-
-User=ubuntu            # Your Linux username
-Group=www-data             # Nginx runs under www-data
-WorkingDirectory=/home/ubuntu/pilixar    # Your project's directory
-ExecStart=/home/ubuntu/box_venv/bin/gunicorn \
-  --workers 3 \
-  --bind 0.0.0.0:8000\pilixar.wsgi:application
-Restart=always
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/pilixar
+ExecStart=/home/ubuntu/your_venv/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

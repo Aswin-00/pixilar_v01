@@ -34,10 +34,10 @@ python manage.py migrate
 
 # Start the Django development server (for local development/testing only)
 # Uncomment the next line if you want to run the Django development server
-# python manage.py runserver 0.0.0.0:8000
+#python manage.py runserver 0.0.0.0:8000
 
 # Start the application with Gunicorn for production
 # This will start Gunicorn with 3 worker processes, listening on all interfaces at port 8000
-gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
+#gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
 
 

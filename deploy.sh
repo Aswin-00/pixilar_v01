@@ -47,6 +47,13 @@ python3.11 manage.py add_product
 # Reload systemd manager configuration
 sudo systemctl daemon-reload
 
+if sudo journalctl -xe | grep -q "systemd[1]: Reloading"; then
+    echo "Systemctl daemon successfully reloaded."
+else
+    echo "Systemctl daemon reload failed. Check systemd logs for more information."
+    exit 1
+fi
+
 # Stop Gunicorn service if it's running
 sudo systemctl stop gunicorn.service
 
@@ -55,11 +62,21 @@ if [ -f /etc/systemd/system/gunicorn.service ]; then
     sudo rm /etc/systemd/system/gunicorn.service
 fi
 
-# Reload systemd manager configuration again to reflect changes
-sudo systemctl daemon-reload
+
+
 
 # Copy the new Gunicorn service file to the systemd directory
 sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
+
+
+sudo systemctl daemon-reload
+
+if sudo journalctl -xe | grep -q "systemd[1]: Reloading"; then
+    echo "Systemctl daemon successfully reloaded."
+else
+    echo "Systemctl daemon reload failed. Check systemd logs for more information."
+    exit 1
+fi
 
 # Start the Gunicorn service
 sudo systemctl start gunicorn.service

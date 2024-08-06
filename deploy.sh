@@ -38,4 +38,4 @@ sudo systemctl start gunicorn.service
 
 sudo journalctl -u my_service.service
 
-sudo cp ngix_config /etc/nginx/sites-available/   
+# sudo cp ngix_config /etc/nginx/sites-available/   

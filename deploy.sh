@@ -44,37 +44,17 @@ cp env .env
 
 python3.11 manage.py add_product
 
-# Reload systemd manager configuration
-sudo systemctl daemon-reload
+sudo systemctl stop gunicorn
 
-if sudo journalctl -xe | grep -q "systemd[1]: Reloading"; then
-    echo "Systemctl daemon successfully reloaded."
-else
-    echo "Systemctl daemon reload failed. Check systemd logs for more information."
-    exit 1
-fi
-
-# Stop Gunicorn service if it's running
-sudo systemctl stop gunicorn.service
-
-# Remove the existing Gunicorn service file, if it exists
-if [ -f /etc/systemd/system/gunicorn.service ]; then
-    sudo rm /etc/systemd/system/gunicorn.service
-fi
-
-
-
-
-# Copy the new Gunicorn service file to the systemd directory
 sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 
+sudo systemctl daemon-reload
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
 
-# Start the Gunicorn service
-sudo systemctl start gunicorn.service
 
-# Check the status of the Gunicorn service
-sudo systemctl status gunicorn.service
+
 
 # Remove the existing Nginx configuration, if it exists
 if [ -f /etc/nginx/sites-available/pixilar_config ]; then
@@ -92,7 +72,10 @@ sudo cp pixilar_config /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/
 
 # Reload the Nginx configuration
-sudo systemctl reload nginx
+sudo systemctl restart  nginx
+
+sudo systemctl status nginx
 
 # Check the logs for the Gunicorn service
-sudo journalctl -u gunicorn.service
+
+echo "Deployment complete. Your Django application should be running!"

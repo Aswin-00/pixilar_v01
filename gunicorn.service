@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 
-User=www-data                # Your Linux username
+User=ubuntu            # Your Linux username
 Group=www-data             # Nginx runs under www-data
 WorkingDirectory=/home/ubuntu/pilixar    # Your project's directory
 ExecStart=/home/ubuntu/box_venv/bin/gunicorn \

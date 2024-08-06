@@ -27,10 +27,9 @@ pip install -r requirements.txt
 pip install gunicorn
 
 # Make database migrations (prepares migration files)
-python3.11 manage.py makemigrations
 
-# Apply the migrations to the database
-python3.11 manage.py migrate
+python3.11 manage.py add_product
+
 
 # Start the Django development server (for local development/testing only)
 # Uncomment the next line if you want to run the Django development server
@@ -39,5 +38,5 @@ python3.11 manage.py migrate
 # Start the application with Gunicorn for production
 # This will start Gunicorn with 3 worker processes, listening on all interfaces at port 8000
 #gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
-nohup gunicorn pilixar.wsgi:application --bind 0.0.0.0:8000 --workers 3 &
+nohup gunicorn pilixar.wsgi:application --bind 0.0.0.0:8000 --workers 3   &
 

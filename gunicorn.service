@@ -8,7 +8,7 @@ After=network.target
 User=ubuntu                # Your Linux username
 Group=www-data             # Nginx runs under www-data
 WorkingDirectory=/home/ubuntu/pilixar    # Your project's directory
-ExecStart=/home/ubuntu/env/bin/gunicorn \
+ExecStart=/home/ubuntu/box_venv/bin/gunicorn \
   --workers 3 \
   --bind 0.0.0.0:8000 \
   pilixar.wsgi:application

@@ -12,7 +12,9 @@
 # sudo mv env .env
 # # Update package lists for upgrades and new package installations
 sudo apt-get update
-# sudo apt-get -y install nginx python3.11 python3.11-venv  python3.11-full
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+
 
 # sudo apt-get install  python3.11 
 # sudo apt-get install python3.11-venv 

@@ -39,5 +39,5 @@ python3.11 manage.py migrate
 # Start the application with Gunicorn for production
 # This will start Gunicorn with 3 worker processes, listening on all interfaces at port 8000
 #gunicorn --workers 3 --bind 0.0.0.0:8000 pilixar.wsgi:application
-
+nohup gunicorn pilixar.wsgi:application --bind 0.0.0.0:8000 --workers 3 &
 

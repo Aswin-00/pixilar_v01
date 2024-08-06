@@ -44,38 +44,46 @@ cp env .env
 
 python3.11 manage.py add_product
 
-
+# Reload systemd manager configuration
 sudo systemctl daemon-reload
 
-sudo systemctl stop  gunicorn.service
-sudo rm  /etc/systemd/system/gunicorn.service
+# Stop Gunicorn service if it's running
+sudo systemctl stop gunicorn.service
+
+# Remove the existing Gunicorn service file, if it exists
+if [ -f /etc/systemd/system/gunicorn.service ]; then
+    sudo rm /etc/systemd/system/gunicorn.service
+fi
+
+# Reload systemd manager configuration again to reflect changes
 sudo systemctl daemon-reload
 
+# Copy the new Gunicorn service file to the systemd directory
+sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
 
-sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service
-
-
+# Start the Gunicorn service
 sudo systemctl start gunicorn.service
 
+# Check the status of the Gunicorn service
 sudo systemctl status gunicorn.service
 
+# Remove the existing Nginx configuration, if it exists
+if [ -f /etc/nginx/sites-available/pixilar_config ]; then
+    sudo rm /etc/nginx/sites-available/pixilar_config
+fi
 
-sudo rm  /etc/nginx/sites-available/pixilar_config
+if [ -f /etc/nginx/sites-enabled/pixilar_config ]; then
+    sudo rm /etc/nginx/sites-enabled/pixilar_config
+fi
 
+# Copy the new Nginx configuration to the available sites directory
+sudo cp pixilar_config /etc/nginx/sites-available/
 
-sudo rm  /etc/nginx/sites-enabled/pixilar_config
-
-
-
-
-sudo cp pixilar_config  /etc/nginx/sites-available/
-
-
-
+# Create a symbolic link in the sites-enabled directory
 sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/
 
+# Reload the Nginx configuration
+sudo systemctl reload nginx
 
-sudo journalctl -u my_service.service
-
-sudo systemctl restart nginx
-
+# Check the logs for the Gunicorn service
+sudo journalctl -u gunicorn.service

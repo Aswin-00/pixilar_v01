@@ -34,9 +34,13 @@ source box_venv/bin/activate
 # # Install all required packages listed in 'requirements.txt'
 pip install -r requirements.txt
 
+
+cp env .env
 # # Install Gunicorn, the WSGI server, if it's not listed in requirements.txt
 
 # # Make database migrations (prepares migration files)
+
+
 
 python3.11 manage.py add_product
 

@@ -27,10 +27,10 @@ pip install -r requirements.txt
 pip install gunicorn
 
 # Make database migrations (prepares migration files)
-python manage.py makemigrations
+python3.11 manage.py makemigrations
 
 # Apply the migrations to the database
-python manage.py migrate
+python3.11 manage.py migrate
 
 # Start the Django development server (for local development/testing only)
 # Uncomment the next line if you want to run the Django development server

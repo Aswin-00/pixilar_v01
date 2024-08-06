@@ -7,12 +7,7 @@
 # Move the 'env' directory to '.env' if needed (rename for convention purposes).
 # Uncomment if you need to rename an existing virtual environment directory.
 
-if systemctl is-active --quiet  gunicorn.service ;then 
-    sudo systemctl stop gunicorn.service
-else
-    echo "check done"
-
-if
+#sudo systemctl stop gunicorn.service
 
 sudo mv env .env
 # Update package lists for upgrades and new package installations

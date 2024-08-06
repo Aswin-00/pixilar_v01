@@ -6,6 +6,8 @@
 
 # Move the 'env' directory to '.env' if needed (rename for convention purposes).
 # Uncomment if you need to rename an existing virtual environment directory.
+sudo killall gunicorn
+
 sudo mv env .env
 # Update package lists for upgrades and new package installations
 sudo apt-get update

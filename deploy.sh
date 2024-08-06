@@ -29,7 +29,6 @@ pip install -r requirements.txt
 
 python3.11 manage.py add_product
 
-python3.11 manage.py gunicorn 
 
 sudo systemctl daemon-reload
 

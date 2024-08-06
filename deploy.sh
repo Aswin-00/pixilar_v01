@@ -26,7 +26,7 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get -y install python3.11 python3.11-venv python3-pip nginx
 
 
-
+python3.11 -m venv box_venv
 
 # # Activate the virtual environment
 source box_venv/bin/activate

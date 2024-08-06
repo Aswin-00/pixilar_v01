@@ -69,14 +69,6 @@ fi
 sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 
-sudo systemctl daemon-reload
-
-if sudo journalctl -xe | grep -q "systemd[1]: Reloading"; then
-    echo "Systemctl daemon successfully reloaded."
-else
-    echo "Systemctl daemon reload failed. Check systemd logs for more information."
-    exit 1
-fi
 
 # Start the Gunicorn service
 sudo systemctl start gunicorn.service

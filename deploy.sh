@@ -29,6 +29,8 @@ pip install -r requirements.txt
 
 python3.11 manage.py add_product
 
+python3.11 manage.py gunicorn 
+
 sudo systemctl daemon-reload
 
 sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service
@@ -36,6 +38,13 @@ sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 sudo systemctl start gunicorn.service
 
+sudo systemctl status gunicorn.service
+
+
+suod cp pixilar_confif  /etc/nginx/sites-available/
+
+sudo ln -s /etc/nginx/sites-available/my_django_project /etc/nginx/sites-enabled/
+
+
 sudo journalctl -u my_service.service
 
-# sudo cp ngix_config /etc/nginx/sites-available/   

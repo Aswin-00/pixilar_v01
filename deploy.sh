@@ -51,28 +51,7 @@ sudo cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 sudo systemctl daemon-reload
 sudo systemctl start gunicorn
-sudo systemctl enable gunicor
-    def handle(self, *args, **kwargs):
-        username ='admin'
-        email = 'bootpq@gmail.com'
-        password = 'admin'
-
-        social_apps = [
-            {
-                'provider': 'google',  # Use lowercase for the provider identifier
-                'provider_id':config('GOOGLE_SSO_PROJECT_ID'),
-                'name': 'Google',
-                'client_id': config('GOOGLE_SSO_CLIENT_ID'),
-                'secret': config('GOOGLE_CLIENT_SECRET'),
-            }
-        ]
-        
-         # set all database 
-        call_command('makemigrations')
-        call_command('makemigrations')
-        call_command('migrate')
-        call_command('makemigration myapp ')
-        call_command('migrate myapp ')n
+sudo systemctl enable gunicorn
 
 
 

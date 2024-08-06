@@ -47,6 +47,7 @@ python3.11 manage.py add_product
 
 sudo systemctl daemon-reload
 
+
 sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 
@@ -55,7 +56,17 @@ sudo systemctl start gunicorn.service
 sudo systemctl status gunicorn.service
 
 
+sudo rm  /etc/nginx/sites-available/pixilar_config
+
+
+sudo rm  /etc/nginx/sites-enabled/pixilar_config
+
+
+
+
 sudo cp pixilar_config  /etc/nginx/sites-available/
+
+
 
 sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/
 

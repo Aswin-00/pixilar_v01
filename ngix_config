@@ -1,25 +1,8 @@
 server {
-    listen 80;
-    server_name 54.66.44.33;  # Change this to your actual domain or IP
-
-    # Serve favicon.ico directly
-    location = /favicon.ico { 
-        access_log off; 
-        log_not_found off; 
-    }
-
-    # Serve static files
-    location /static/ {
-        alias /home/ubuntu/static/;
-    }
-
-    # Proxy pass to Gunicorn
-    location / {
-        include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/gunicorn.sock;
-    }
-
-    # Optional logging
-    error_log /var/log/nginx/my_django_project_error.log;
-    access_log /var/log/nginx/my_django_project_access.log;
+ listen 80;
+ listen [::]:80;
+location / {
+ include proxy_params;
+ proxy_pass http://0.0.0.0:8000;
+ }
 }

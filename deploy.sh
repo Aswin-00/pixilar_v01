@@ -69,7 +69,7 @@ sudo rm /etc/nginx/sites-enabled/pixilar_config
 sudo cp pixilar_config /etc/nginx/sites-available/
 
 # Create a symbolic link in the sites-enabled directory
-sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/pixilar_config
 
 # Reload the Nginx configuration
 sudo systemctl restart  nginx

@@ -41,7 +41,7 @@ sudo systemctl start gunicorn.service
 sudo systemctl status gunicorn.service
 
 
-sudo cp pixilar_confif  /etc/nginx/sites-available/
+sudo cp pixilar_config  /etc/nginx/sites-available/
 
 sudo ln -s /etc/nginx/sites-available/my_django_project /etc/nginx/sites-enabled/
 

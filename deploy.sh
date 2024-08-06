@@ -31,7 +31,7 @@
 
 sudo systemctl daemon-reload
 
-sudo  gunicorn.service /etc/systemd/system/gunicorn.service
+sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service
 
 
 sudo systemctl start gunicorn.service

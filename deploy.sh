@@ -57,13 +57,10 @@ sudo systemctl enable gunicorn
 
 
 # Remove the existing Nginx configuration, if it exists
-if [ -f /etc/nginx/sites-available/pixilar_config ]; then
-    sudo rm /etc/nginx/sites-available/pixilar_config
-fi
+sudo rm /etc/nginx/sites-available/pixilar_config
+sudo rm /etc/nginx/sites-enabled/pixilar_config
 
-if [ -f /etc/nginx/sites-enabled/pixilar_config ]; then
-    sudo rm /etc/nginx/sites-enabled/pixilar_config
-fi
+
 
 # Copy the new Nginx configuration to the available sites directory
 sudo cp pixilar_config /etc/nginx/sites-available/

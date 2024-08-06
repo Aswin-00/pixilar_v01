@@ -14,12 +14,16 @@
 sudo apt-get update
 # sudo apt-get -y install nginx python3.11 python3.11-venv  python3.11-full
 
-sudo apt-get install  python3.11 
-sudo apt-get install python3.11-venv 
-sudo apt-get install python3-pip 
-sudo apt-get install  nginx
+# sudo apt-get install  python3.11 
+# sudo apt-get install python3.11-venv 
+# sudo apt-get install python3-pip 
+# sudo apt-get install  nginx
 
-python3.11  -m venv box_venv
+# python3.11  -m venv box_venv
+
+sudo apt-get -y install python3.11 python3.11-venv python3-pip nginx
+
+
 
 
 # # Activate the virtual environment

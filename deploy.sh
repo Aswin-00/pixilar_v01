@@ -30,5 +30,5 @@ pip install -r requirements.txt
 python3.11 manage.py add_product
 
 
-sudo systemctl start gunicorn.service
+sudo systemctl start gunicorn
 

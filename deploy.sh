@@ -47,3 +47,5 @@ sudo ln -s /etc/nginx/sites-available/pixilar_config /etc/nginx/sites-enabled/
 
 sudo journalctl -u my_service.service
 
+systemctl restart nginx
+

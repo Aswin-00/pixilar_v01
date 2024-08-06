@@ -23,6 +23,31 @@ class Command(BaseCommand):
                 'secret': config('GOOGLE_CLIENT_SECRET'),
             }
         ]
+        
+         # set all database 
+        call_command('makemigrations')
+        call_command('migrate')
+        call_command('collectstatic')
+
+            
+           
+        
+        if not User.objects.filter(username=username).exists():
+            
+            # create superuser 
+            call_command('createsuperuser', username=username, email=email, interactive=False)
+            
+            # Set the password
+            user = User.objects.get(username=username)
+            user.set_password(password)
+            user.save()
+            # collectstatic
+
+            self.stdout.write(self.style.SUCCESS(f'Superuser "{username}" created successfully with password!'))
+        else:
+            self.stdout.write(self.style.WARNING(f'Superuser "{username}" already exists.'))
+            
+            
 
         for app_data in social_apps:
             # Extract site 
@@ -36,22 +61,4 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f'SocialApp "{app.name}" already exists.'))
 
         
-        if not User.objects.filter(username=username).exists():
-            
-            # set all database 
-            call_command('makemigratios')
-            call_command('migrate')
-            
-            # create superuser 
-            call_command('createsuperuser', username=username, email=email, interactive=False)
-            
-            # Set the password
-            user = User.objects.get(username=username)
-            user.set_password(password)
-            user.save()
-            # collectstatic
-            call_command('collectstatic')
-
-            self.stdout.write(self.style.SUCCESS(f'Superuser "{username}" created successfully with password!'))
-        else:
-            self.stdout.write(self.style.WARNING(f'Superuser "{username}" already exists.'))
+        

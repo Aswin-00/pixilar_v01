@@ -46,8 +46,10 @@ python3.11 manage.py add_product
 
 
 sudo systemctl daemon-reload
-sudo systemctl stop 
+
+sudo systemctl stop  gunicorn.service
 sudo rm  /etc/systemd/system/gunicorn.service
+sudo systemctl daemon-reload
 
 
 sudo  cp gunicorn.service /etc/systemd/system/gunicorn.service

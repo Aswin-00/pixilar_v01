@@ -26,7 +26,11 @@ class Command(BaseCommand):
         
          # set all database 
         call_command('makemigrations')
+        call_command('makemigrations')
         call_command('migrate')
+        call_command('makemigrations','myapp')
+        call_command('migrate', 'myapp')
+        
         # call_command('collectstatic --noinput')
 
             
